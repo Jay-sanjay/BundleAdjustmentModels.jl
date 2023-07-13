@@ -43,7 +43,7 @@ function jacobian_residual_check(
   return J_errs
 end
 
-@testset "" begin
+@testset "Test derivative Jacobian of residual" begin
   nls = BundleAdjustmentModel("problem-49-7776-pre")
   @test length(jacobian_residual_check(nls)) == 0
 end
