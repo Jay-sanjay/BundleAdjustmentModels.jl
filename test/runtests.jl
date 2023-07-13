@@ -7,6 +7,7 @@ end
 include("testBundleAdjustmentModels.jl")
 include("testBundleAdjustmentAllocations.jl")
 
+# https://github.com/JuliaSmoothOptimizers/NLPModelsTest.jl/blob/src/dercheck.jl#L43
 function jacobian_residual_check(
   nlp::AbstractNLSModel;
   x::AbstractVector = nlp.meta.x0,
@@ -45,5 +46,6 @@ end
 
 @testset "Test derivative Jacobian of residual" begin
   nls = BundleAdjustmentModel("problem-49-7776-pre")
+  x = 10 * [-(-1.0)^i for i = 1:nls.meta.nvar]
   @test length(jacobian_residual_check(nls)) == 0
 end
