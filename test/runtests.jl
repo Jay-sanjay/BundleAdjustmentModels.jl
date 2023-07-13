@@ -47,5 +47,5 @@ end
 @testset "Test derivative Jacobian of residual" begin
   nls = BundleAdjustmentModel("problem-49-7776-pre")
   x = 10 * [-(-1.0)^i for i = 1:nls.meta.nvar]
-  @test length(jacobian_residual_check(nls)) == 0
+  @test length(jacobian_residual_check(nls, x = x)) == 0
 end
